@@ -6,3 +6,7 @@ def goodbye():
 
 def test():
     return print("test 3")
+
+def alex():
+    return print("Test #4")
+
