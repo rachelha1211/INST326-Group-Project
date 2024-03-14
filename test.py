@@ -10,3 +10,5 @@ def test():
 def alex():
     return print("Test #4")
 
+def retry_term():
+    return print("Cool")
