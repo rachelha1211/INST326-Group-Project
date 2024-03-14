@@ -1,7 +1,7 @@
 print("hello")
 print("this is Chris Xu)")
 
-def goodbye(): #change
+def goodbye(): 
     return print("goodbye")
 
 def test():
