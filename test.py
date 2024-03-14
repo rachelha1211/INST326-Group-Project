@@ -1,6 +1,6 @@
 print("hello")
 
-def goodbye(): #change
+def goodbye(): 
     return print("goodbye")
 
 def test():
