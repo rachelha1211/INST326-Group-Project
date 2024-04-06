@@ -14,3 +14,5 @@ class Category():
         """
         self.category_name = name
         
+if __name__ == main():
+        
