@@ -22,6 +22,7 @@ expense2 = {'amount': '30', 'category': 'groceries'}
 expenses.append(expense2)
 
 
+    
 def removeExpense():
     while True:
         listExpenses()
@@ -41,13 +42,14 @@ def printMenu():
     print("1. Add A New Expense")
     print("2. Remove an Expense")
     print("3. List All Expenses")
+    
 
 def listExpenses():
-    print("\Here is a list of your expenses")
+    print("Here is a list of your expenses")
     print("--------------------------------")
     counter = 0 
     for expense in expenses:
-        print("#", counter, "-", expense['amount'], "-", expense['category'])
+        print("#", counter, "-","$", expense['amount'], "-", expense['category'])
         counter += 1
     print("\n\n")
 
