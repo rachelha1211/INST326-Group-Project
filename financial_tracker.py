@@ -13,6 +13,22 @@ class Category():
             name (str): see class documentation
         """
         self.category_name = name
+
+expenses = []
         
-if __name__ == main():
-        
+def addExpense(amount, category):
+    expense = {'amount': amount, 'category': category}
+    expenses.append(expense)
+
+def printMenu():
+    print("Please choose from one of the following options...")
+    print("1. Add A New Expense")
+    print("2. Remove an Expense")
+    print("3. List All Expenses")
+
+def listExpenses():
+    print("\Here is a list of your expenses")
+    print("--------------------------------")
+    counter = 0 
+    for expense in expenses:
+        print("#", counter, "-", expense['amount'], "-", expense['category'])
