@@ -3,6 +3,14 @@
 class Expense():
     """A class that stores each expense's data for the week"""
     def __init__(self, date, expense, category):
+        """
+        Initializes the Expense object
+        
+        Params:
+        - date (str): the date of expense.
+        - expense (float): the dollar amount of expense.
+        - category (str): the category of the expense.
+        """
         self.expense = expense
         self.date = float(date)
         self.category = category
@@ -11,6 +19,14 @@ class Expense():
 class Create_expenses():
     """A class that creates and Stores all expenses"""
     def __init__(self, date, expense, category):
+        """
+         Initializes the CreateExpenses object.
+
+        Params:
+        - date (str): the date of expense.
+        - expense (float): the dollar amount of expense.
+        - category (str): the category of the expense.
+        """
         self.expense_list = []
         
         self.expense_list.append(Expense(date, expense, category))
@@ -18,6 +34,12 @@ class Create_expenses():
 class Results:   
     """A class that organizes the expense entries and calculates the expense total"""            
     def organize_days():
+        """
+        Organizes the expense entries based on the days of the week.
+
+        Returns:
+        - list: a list of the expense entries.
+        """
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         
         if Create_expenses.expense_list > 1:
@@ -25,6 +47,12 @@ class Results:
         return Create_expenses.expense_list
     
     def calculate_total_week():
+        """
+        Calculates the total expenses for the week.
+
+        Returns:
+        - float: The total expenses for the week.
+        """
         total = 0
         
         if Create_expenses.expense_list > 1:
@@ -35,17 +63,20 @@ class Results:
 class Display: 
     "A class that prints user directions for the program."   
     def printMenu():
+        """Prints the menu options"""
         print("Please choose from one of the following options (1, 2, 3):")
         print("1. Add A New Expense")
         print("2. Remove an Expense")
         print("3. List All Expenses and total budget for the week")
 
     def listExpenses():
+        """Lists all the expenses for the week"""
         print("Here is a list of your expenses for the week:")
         list = Results.organize_days()
         print(list)
         
     def removeExpense():
+        """Removes an expense."""
         while True:
             amount = print("What expense would you like to remove? (specific date, amount, category):")
             
