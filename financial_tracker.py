@@ -30,6 +30,7 @@ def removeExpense():
         try:
             expenseToRemove = int(input(">"))
             del expenses[expenseToRemove]
+            print("Expense deleted")
         except:
             print("Invalid input. Please try again.")
        
