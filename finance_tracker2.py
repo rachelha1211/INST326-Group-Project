@@ -1,5 +1,6 @@
 """A personal financial tracker that will display total budget over the week"""
 
+# 1 method total continuing 
 class Expense():
     """A class that stores each expense's data for the week"""
     def __init__(self, date, expense, category):
@@ -15,7 +16,8 @@ class Expense():
         self.date = float(date)
         self.category = category
              
-        
+
+# 2 methods total continuing       
 class Create_expenses():
     """A class that creates and Stores all expenses"""
     def __init__(self, date, expense, category):
@@ -31,6 +33,8 @@ class Create_expenses():
         
         self.expense_list.append(Expense(date, expense, category))
 
+
+# 4 methods total continuing 
 class Results:   
     """A class that organizes the expense entries and calculates the expense total"""            
     def organize_days():
@@ -59,7 +63,10 @@ class Results:
             for expense in Create_expenses.expense_list[1]:
                 total += expense
                 return total    
-    
+
+
+
+# 7 methods total continuing    
 class Display: 
     "A class that prints user directions for the program."   
     def printMenu():
