@@ -63,8 +63,16 @@ class Results:
             for expense in Create_expenses.expense_list[1]:
                 total += expense
                 return total    
+            
+    def calculate_category_total(expense_list):
+        category_totals = {}
+        for expense in expense_list:
+            category = expense.category
+            category_totals[category] = category_totals.get(category, 0) + expense.expense
+        return category_totals
 
 
+            
 
 # 7 methods total continuing    
 class Display: 
@@ -140,6 +148,13 @@ if __name__ == "__main__":
             
             print(Display.listExpenses())
             print(f"Total amount spent for this week: {result.calculate_total_week()}")
+            
+            i = input("See category total expenses?(yes/no)")
+            if i.lower() == "yes":
+                category_totals = Results.calculate_category_total(Create_expenses.expense_list)
+                print("Category Total Expenses: ")
+                for category, total in category_totals.items():
+                    print(f"{category}: ${total}")
         else:
              print("Invalid input. Please try again.")
              Display.printMenu()
