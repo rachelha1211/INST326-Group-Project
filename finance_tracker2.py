@@ -65,6 +65,12 @@ class Results:
                 return total    
             
     def calculate_category_total(expense_list):
+        """
+        Calculates the total expenses for a category
+        
+        Returns:
+        - dict: A dictionary where the keys are categories and values are total expenses
+        """
         category_totals = {}
         for expense in expense_list:
             category = expense.category
