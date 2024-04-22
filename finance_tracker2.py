@@ -32,10 +32,10 @@ class Create_expenses():
         self.expense_list = []
         
         self.expense_list.append(Expense(date, float(amount), category))
-
+        
 
 # 4 methods total continuing 
-class Results:   
+class Results():   
     """A class that organizes the expense entries and calculates the expense total"""            
     def organize_days():
         """
@@ -46,7 +46,7 @@ class Results:
         """
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         
-        if len(Create_expenses.expense_list) > 1:
+        if len(Create_expenses.expense_list) >= 1:
             sorted_list = sorted(Create_expenses.expense_list[0], key = days.index)
         return sorted_list
     
@@ -79,7 +79,7 @@ class Results:
 
 
 # 7 methods total continuing    
-class Display: 
+class Display(): 
     "A class that prints user directions for the program."   
     def printMenu():
         """Prints the menu options"""
@@ -103,15 +103,14 @@ class Display:
         """Removes an expense."""
         while True:
             Display.listExpenses()
-            amount = print("What expense would you like to remove? (specific date, amount, category):")
+            print("What expense would you like to remove? (specific #):")
             
-            for expense in Results.organize_days:
-                try:
-                    if expense == amount:
-                        del(expense)
-                except:
-                    print("Invalid input. Please try again.")
-                    
+            try:
+                expenseToRemove = int(input(">"))
+                del Results.organize_days[expenseToRemove]
+                print("Expense deleted")
+            except:
+                print("Invalid input. Please try again.")                    
     
 
 if __name__ == "__main__":
@@ -149,22 +148,20 @@ if __name__ == "__main__":
                 
         elif(optionSelected == '2'):
             Display.removeExpense()
-            print("Expense has been removed")
             break
             
         elif(optionSelected == '3'):
             try:
                 result = Results.organize_days()
-                if len(result) >= 1:
-                    Display.listExpenses()
-                    print(f"Total amount spent for this week: {result.calculate_total_week()}")
-                    
-                    i = input("See category total expenses?(yes/no)")
-                    if i.lower() == "yes":
-                        category_totals = Results.calculate_category_total(Create_expenses.expense_list)
-                        print("Category Total Expenses: ")
-                        for category, total in category_totals.items():
-                            print(f"{category}: ${total}")
+                Display.listExpenses()
+                print(f"Total amount spent for this week: {result.calculate_total_week()}")
+                
+                i = input("See category total expenses?(yes/no)")
+                if i.lower() == "yes":
+                    category_totals = Results.calculate_category_total(Create_expenses.expense_list)
+                    print("Category Total Expenses: ")
+                    for category, total in category_totals.items():
+                        print(f"{category}: ${total}")
             except ValueError:
                 print("ValueError, list is empty")
                 break
