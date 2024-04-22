@@ -1,5 +1,6 @@
 """A personal financial tracker that will display total budget over the week"""
 
+
 # 1 method total continuing 
 class Expense():
     """A class that stores each expense's data for the week"""
@@ -20,6 +21,9 @@ class Expense():
 # 2 methods total continuing       
 class Create_expenses():
     """A class that creates and Stores all expenses"""
+
+    expense_list = []
+
     def __init__(self, date, amount, category):
         """
          Initializes the CreateExpenses object.
@@ -29,15 +33,17 @@ class Create_expenses():
         - amount (float): the dollar amount of expense.
         - category (str): the category of the expense.
         """
-        self.expense_list = []
+        self.date = date
+        self.amount = amount
+        self.category = category
         
-        self.expense_list.append(Expense(date, float(amount), category))
+        self.expense_list.append(Expense(self.date, float(self.amount), self.category))
         
 
 # 4 methods total continuing 
 class Results():   
     """A class that organizes the expense entries and calculates the expense total"""            
-    def organize_days():
+    def organize_days(expense_list):
         """
         Organizes the expense entries based on the days of the week.
 
@@ -46,8 +52,8 @@ class Results():
         """
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         
-        if len(Create_expenses.expense_list) >= 1:
-            sorted_list = sorted(Create_expenses.expense_list[0], key = days.index)
+        if len(expense_list) >= 1:
+            sorted_list = sorted(expense_list, key = lambda expense: days.index(expense.date))
         return sorted_list
     
     def calculate_total_week(sorted_list):
@@ -59,9 +65,9 @@ class Results():
         """
         total = 0
         
-        if sorted_list >= 1:
+        if len(sorted_list) >= 1:
             for expense in sorted_list:
-                total += expense
+                total += expense.amount
                 return total    
             
     def calculate_category_total(sorted_list):
@@ -71,10 +77,12 @@ class Results():
         Returns:
         - dict: A dictionary where the keys are categories and values are total expenses
         """
+
         category_totals = {}
-        for expense in sorted_list[2]:
-            category = expense
-            category_totals[category] = category_totals.get(category, 0) + sorted_list[1]
+        for expense in sorted_list:
+            category = expense.category
+            amount = expense.amount
+            category_totals[category] = category_totals.get(category, 0) +amount
         return category_totals
 
 
@@ -89,33 +97,38 @@ class Display():
         print("3. List All Expenses and total budget for the week")
         print("4. Quit Menu")
 
-    def listExpenses():
+    def listExpenses(sorted_list):
         """Lists all the expenses for the week"""
         print("Here is a list of your expenses for the week:")
         print("--------------------------------")
         counter = 0
-        for expense in Results.organize_days:
-            print("#", counter, "-","day", expense[0], "-","$", expense[1], "-","category", expense[2])
+        for expense in sorted_list:
+            print("#", counter, "-","day:", expense.date, "-","$", expense.amount, "-","category:", expense.category)
             counter += 1
         print("\n\n")
         
-    def removeExpense():
+    def removeExpense(sorted_list):
         """Removes an expense."""
-        while True:
-            Display.listExpenses()
+        more_expenses = 1
+
+        while ((more_expenses == 1) and (len(sorted_list) > 0)):
             print("What expense would you like to remove? (specific #):")
             
             try:
+                Display.listExpenses(sorted_list)
                 expenseToRemove = int(input(">"))
-                del Results.organize_days[expenseToRemove]
+                del sorted_list[expenseToRemove]
                 print("Expense deleted")
-            except:
-                print("Invalid input. Please try again.")                    
-    
+                print("Would you like to delete another expense?\n1. yes\n2. no\nEnter 1 or 2")
+                more_expenses = int(input(">"))
+            except (ValueError, IndexError):
+                print("Invalid input. Please try again.") 
+            
 
-if __name__ == "__main__":
+def main():
     while True:
-        ###Prompt the user
+    ###Prompt the user
+
         Display.printMenu()
         optionSelected = input(">")
         
@@ -147,23 +160,24 @@ if __name__ == "__main__":
                 break
                 
         elif(optionSelected == '2'):
-            Display.removeExpense()
+            result = Results.organize_days(Create_expenses.expense_list)
+            Display.removeExpense(result)
             break
             
         elif(optionSelected == '3'):
             try:
-                result = Results.organize_days()
-                Display.listExpenses()
-                print(f"Total amount spent for this week: {result.calculate_total_week()}")
+                result = Results.organize_days(Create_expenses.expense_list)
+                Display.listExpenses(result)
+                print(f"Total amount spent for this week: {Results.calculate_total_week(result)}")
                 
                 i = input("See category total expenses?(yes/no)")
                 if i.lower() == "yes":
-                    category_totals = Results.calculate_category_total(Create_expenses.expense_list)
+                    category_totals = Results.calculate_category_total(result)
                     print("Category Total Expenses: ")
                     for category, total in category_totals.items():
                         print(f"{category}: ${total}")
             except ValueError:
-                print("ValueError, list is empty")
+                print("Nothing in the list")
                 break
                 
         elif(optionSelected == '4'):
@@ -172,3 +186,9 @@ if __name__ == "__main__":
         else:
              print("Invalid input. Please try again.")
              Display.printMenu()
+        
+        print("\n")
+        main()
+
+if __name__ == "__main__":
+    main()
