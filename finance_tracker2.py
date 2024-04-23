@@ -29,18 +29,24 @@ class Create_expenses():
     def __init__(self):
         """
          Initializes the CreateExpenses object.
-
-        Params:
-        - date (str): the date of expense.
-        - amount (float): the dollar amount of expense.
-        - category (str): the category of the expense.
         """
         
     
     def add_expense(self, date, amount, category):
+        """add a new expense to the expense list
+        
+        Parameters:
+            - date(str): the date of the new expense
+            - amount(str): the amount of the new expense
+            - category(str): the category of the new expense
+        """
         self.expense_list.append(Expense(date, float(amount), category))
 
     def get_expense_list(self):
+        """return the expense_list of the classes instance
+        
+        Returns:
+            expense_list(list): the list of expenses added by the user"""
         return self.expense_list
         
 
