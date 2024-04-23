@@ -1,9 +1,7 @@
 """A personal financial tracker that will display total budget over the week"""
 
-
-# 1 method total continuing 
+ 
 from typing import Any
-
 
 class Expense():
     """A class that stores each expense's data for the week"""
@@ -11,34 +9,34 @@ class Expense():
         """
         Initializes the Expense object
         
-        Params:
+        Args:
         - date (str): the date of expense.
-        - expense (float): the dollar amount of expense.
+        - amount (float): the dollar amount of expense.
         - category (str): the category of the expense.
         """
         self.amount = amount
         self.date = date
         self.category = category
                  
-
-# 2 methods total continuing       
+      
 class Create_expenses():
     expense_list = []
-    """A class that creates and Stores all expenses"""
-
+    """A class that creates and stores all expenses"""
     def __init__(self):
         """
-         Initializes the CreateExpenses object.
-        """
-        
+         Initializes the Create_expenses object.
+        """ 
     
     def add_expense(self, date, amount, category):
         """add a new expense to the expense list
         
-        Parameters:
+        Args:
             - date(str): the date of the new expense
-            - amount(str): the amount of the new expense
+            - amount(float): the amount of the new expense
             - category(str): the category of the new expense
+            
+        Side effects:
+            modifies the value of expense_list
         """
         self.expense_list.append(Expense(date, float(amount), category))
 
@@ -46,20 +44,24 @@ class Create_expenses():
         """return the expense_list of the classes instance
         
         Returns:
-            expense_list(list): the list of expenses added by the user"""
+            expense_list (list): the list of expenses added by the user
+        """
         return self.expense_list
         
 
-# 4 methods total continuing 
 class Results():   
     """A class that organizes the expense entries and calculates the expense total"""    
-     
     def organize_days(expense_list):
-        """
-        Organizes the expense entries based on the days of the week.
+        """Organizes the expense entries based on the days of the week.
+        
+        Args:
+            expense_list (list): list of expenses added by the user
+            
+        Side effects:
+            modifies value of sorted_list
 
         Returns:
-        - list: a list of the expense entries.
+            sorted_list (list): a list of the expense entries.
         """
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
         sorted_list = []
@@ -71,8 +73,11 @@ class Results():
         """
         Calculates the total expenses for the week.
 
+        Args:
+            sorted_list (list): list of the expense entries
+            
         Returns:
-        - float: The total expenses for the week.
+            float: The total expenses for the week.
         """
         total = 0
         
@@ -83,13 +88,14 @@ class Results():
             return total    
             
     def calculate_category_total(sorted_list):
-        """
-        Calculates the total expenses for a category
+        """Calculates the total expenses for a category
+        
+        Args:
+            sorted_list (list): list of the expense entries
         
         Returns:
-        - dict: A dictionary where the keys are categories and values are total expenses
+            dict: A dictionary where the keys are categories and values are total expenses
         """
-
         category_totals = {}
         for expense in sorted_list:
             category = expense.category
@@ -97,8 +103,7 @@ class Results():
             category_totals[category] = category_totals.get(category, 0) + amount
         return category_totals
 
-
-# 7 methods total continuing    
+   
 class Display(): 
     "A class that prints user directions for the program."   
     def printMenu():
@@ -110,7 +115,11 @@ class Display():
         print("4. Quit Menu")
 
     def listExpenses(sorted_list):
-        """Lists all the expenses for the week"""
+        """Lists all the expenses for the week
+        
+        Args: 
+            sorted_list (list): list of expense entries
+        """
         print("Here is a list of your expenses for the week:")
         print("--------------------------------")
         counter = 0
@@ -120,7 +129,18 @@ class Display():
         print("\n\n")
         
     def removeExpense(sorted_list):
-        """Removes an expense."""
+        """Removes an expense
+        
+        Args:
+            sorted_list (list): list of expense entries
+            
+        Raises:
+            ValueError: invalid user input
+            IndexError: index is out of range
+        
+        Side effects:
+            deletes value in sorted_list
+        """
         more_expenses = 1
 
         while ((more_expenses == 1) and (len(sorted_list) > 0)):
@@ -136,9 +156,14 @@ class Display():
             except (ValueError, IndexError):
                 print("Invalid input. Please try again.") 
             
+            
 new_expense_list = Create_expenses()
 def main():
-
+    """Initiates options on menu
+    
+    Raises:
+        ValueError: empty list
+    """
     while True:
     ###Prompt the user
 
