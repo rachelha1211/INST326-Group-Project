@@ -2,6 +2,9 @@
 
 
 # 1 method total continuing 
+from typing import Any
+
+
 class Expense():
     """A class that stores each expense's data for the week"""
     def __init__(self, date, amount, category):
@@ -20,11 +23,10 @@ class Expense():
 
 # 2 methods total continuing       
 class Create_expenses():
+    expense_list = []
     """A class that creates and Stores all expenses"""
 
-    expense_list = []
-
-    def __init__(self, date, amount, category):
+    def __init__(self):
         """
          Initializes the CreateExpenses object.
 
@@ -33,16 +35,19 @@ class Create_expenses():
         - amount (float): the dollar amount of expense.
         - category (str): the category of the expense.
         """
-        self.date = date
-        self.amount = amount
-        self.category = category
         
-        self.expense_list.append(Expense(self.date, float(self.amount), self.category))
+    
+    def add_expense(self, date, amount, category):
+        self.expense_list.append(Expense(date, float(amount), category))
+
+    def get_expense_list(self):
+        return self.expense_list
         
 
 # 4 methods total continuing 
 class Results():   
-    """A class that organizes the expense entries and calculates the expense total"""            
+    """A class that organizes the expense entries and calculates the expense total"""    
+     
     def organize_days(expense_list):
         """
         Organizes the expense entries based on the days of the week.
@@ -51,7 +56,7 @@ class Results():
         - list: a list of the expense entries.
         """
         days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-        
+        sorted_list = []
         if len(expense_list) >= 1:
             sorted_list = sorted(expense_list, key = lambda expense: days.index(expense.date))
         return sorted_list
@@ -67,8 +72,9 @@ class Results():
         
         if len(sorted_list) >= 1:
             for expense in sorted_list:
+                
                 total += expense.amount
-                return total    
+            return total    
             
     def calculate_category_total(sorted_list):
         """
@@ -82,7 +88,7 @@ class Results():
         for expense in sorted_list:
             category = expense.category
             amount = expense.amount
-            category_totals[category] = category_totals.get(category, 0) +amount
+            category_totals[category] = category_totals.get(category, 0) + amount
         return category_totals
 
 
@@ -124,8 +130,9 @@ class Display():
             except (ValueError, IndexError):
                 print("Invalid input. Please try again.") 
             
-
+new_expense_list = Create_expenses()
 def main():
+
     while True:
     ###Prompt the user
 
@@ -155,18 +162,19 @@ def main():
                     category = input(">")
                 except:
                     print("Invalid input. Please try again.")
-            
-                Create_expenses(date, amount, category)
+                
+                #new_expense_list = Create_expenses()
+                new_expense_list.add_expense(date, amount, category)
                 break
                 
         elif(optionSelected == '2'):
-            result = Results.organize_days(Create_expenses.expense_list)
+            result = Results.organize_days(new_expense_list.get_expense_list())
             Display.removeExpense(result)
             break
             
         elif(optionSelected == '3'):
             try:
-                result = Results.organize_days(Create_expenses.expense_list)
+                result = Results.organize_days(new_expense_list.get_expense_list())
                 Display.listExpenses(result)
                 print(f"Total amount spent for this week: {Results.calculate_total_week(result)}")
                 
