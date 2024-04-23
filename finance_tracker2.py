@@ -118,10 +118,10 @@ class Display():
         more_expenses = 1
 
         while ((more_expenses == 1) and (len(sorted_list) > 0)):
+            Display.listExpenses(sorted_list)
             print("What expense would you like to remove? (specific #):")
             
             try:
-                Display.listExpenses(sorted_list)
                 expenseToRemove = int(input(">"))
                 del sorted_list[expenseToRemove]
                 print("Expense deleted")
@@ -161,15 +161,12 @@ def main():
                 try:
                     category = input(">")
                 except:
-                    print("Invalid input. Please try again.")
-                
-                #new_expense_list = Create_expenses()
+                    print("Invalid input. Please try again.") 
                 new_expense_list.add_expense(date, amount, category)
                 break
                 
         elif(optionSelected == '2'):
-            result = Results.organize_days(new_expense_list.get_expense_list())
-            Display.removeExpense(result)
+            Display.removeExpense(new_expense_list.get_expense_list())
             break
             
         elif(optionSelected == '3'):
