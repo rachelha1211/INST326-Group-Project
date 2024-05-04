@@ -24,3 +24,15 @@ class Test_Results():
 class Test_Display():
     def test_list():
         ft.Display.listExpenses([ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")])
+        
+    def test_removeExpense(self):
+        expense_list = [ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")]
+        ft.Display.removeExpense(expense_list)
+        assert len(expense_list == 1)
+        
+class Test_main():
+    def test_invalid_input(self, monkeypatch, capsys):
+        monkeypatch.setattr("builtins.input", lambda _: "abc")
+        ft.main
+        captured = capsys.readouterr()
+        assert "invalid input" in captured.out
