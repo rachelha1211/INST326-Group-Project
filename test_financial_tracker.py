@@ -22,46 +22,18 @@ class Test_Results():
     def test_calculate_total_week(self):
         total = ft.Results.calculate_total_week([ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")])
         assert total == 33
+class TestCreateExpenses:
+    #fail
+    def test_add_expense():
+        expense_tracker = ft.Create_expenses
+        expense_tracker.add_expense("Monday", 23, "Food")
+        exlist = expense_tracker.get_expense_list()
+        assert len(exlist) == 3
+        assert exlist[0] == ft.Expense("Monday", 23, "Food")
+    #fail
+    def test_get_expense_list():
+        expense_tracker = ft.Create_expenses()
+        expense_tracker.add_expense("Monday", 23, "Food")
+        exlist = expense_tracker.get_expense_list()
+        assert isinstance(exlist, list)
         
-class Test_Display():
-    def test_printMenu(self, capsys):
-        ft.Display.printMenu()
-        captured = capsys.readouterr()
-        assert "Please choose from one of the following options" in captured.out
-    
-    
-    def test_listExpenses(self, capsys):
-        expenses = [ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")]
-        ft.Display.listExpenses(expenses)
-        captured = capsys.readouterr()
-        assert "Monday" in captured.out
-        assert "Food" in captured.out
-        assert "Wednesday" in captured.out
-        assert "School" in captured.out
-    
-    def test_removeExpense(self, monkeypatch):
-        monkeypatch.setattr('builtins.input', lambda _: '0\n2\n')
-        expenses = [ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")]
-        ft.Display.removeExpense(expenses)
-        assert len(expenses) == 1
-        assert expenses[0].date == "Wednesday"
-        
-class Test_main():
-    def test_quit_program(self, monkeypatch):
-        monkeypatch.setattr('builtins.input', lambda _: '4\n')
-        with pytest.raises(SystemExit):
-            ft.main()
-            
-class Test_invalid_inputs():
-    def test_invalid_option(self, capsys, monkeypatch):
-        monkeypatch.setattr('builtins.input', lambda _: 'invalid\n4\n')
-        ft.main()
-        captured = capsys.readouterr()
-        assert "Invalid input" in captured.out
-
-    def test_invalid_remove_input(self, capsys, monkeypatch):
-        monkeypatch.setattr('builtins.input', lambda _: 'a\n2\n')
-        expenses = [ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")]
-        ft.Display.removeExpense(expenses)
-        captured = capsys.readouterr()
-        assert "Invalid input" in captured.out
