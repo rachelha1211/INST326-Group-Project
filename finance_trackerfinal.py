@@ -175,17 +175,19 @@ def main():
             while True:
                 try:
                     date = input(">")
+                    if date not in ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]:
+                        raise ValueError("Invalid day of the week. Please enter a valid day (e.g., Monday, Tuesday, etc.).")
                     break
-                except:
-                     print("Invalid input. Please try again.")
+                except ValueError as e:
+                    print(e)   
             
             print("Enter expense amount: ")
             while True:
                 try:
                     amount = input("> ")
                     break
-                except:
-                     print("Invalid input. Please try again.")
+                except ValueError:
+                    print("Invalid input. Please enter a valid number.")
                      
             print("Enter category (Food, Housing, Transport, School, Misc:): ")
             while True:

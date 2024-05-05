@@ -25,11 +25,10 @@ class Test_Results():
 class TestCreateExpenses:
     #fail
     def test_add_expense():
-        expense_tracker = ft.Create_expenses
-        expense_tracker.add_expense("Monday", 23, "Food")
-        exlist = expense_tracker.get_expense_list()
-        assert len(exlist) == 3
-        assert exlist[0] == ft.Expense("Monday", 23, "Food")
+        expense_tracker = ft.Create_expenses.add_expense([ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")])
+        assert len(expense_tracker) == 3
+        assert expense_tracker[0] == ft.Expense("Monday", 23, "Food")
+        assert expense_tracker[1] == ft.Expense("Wednesday", 10, "School")
     #fail
     def test_get_expense_list():
         expense_tracker = ft.Create_expenses()
