@@ -1,5 +1,6 @@
 """Test units for financial tracker."""
 import finance_trackerfinal as ft
+import sys
 
 
 class Test_create():
@@ -25,6 +26,7 @@ class Test_Display():
     def test_list():
         ft.Display.listExpenses([ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")])
         
+        
     def test_removeExpense(self):
         expense_list = [ft.Expense("Monday", 23, "Food"), ft.Expense("Wednesday", 10, "School")]
         ft.Display.removeExpense(expense_list)
@@ -36,3 +38,4 @@ class Test_main():
         ft.main
         captured = capsys.readouterr()
         assert "invalid input" in captured.out
+        
