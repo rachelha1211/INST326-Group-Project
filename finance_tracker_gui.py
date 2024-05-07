@@ -168,7 +168,10 @@ class Display():
 
 
 class UI():
+    """A class to create a GUI for the finance tracker"""
     def gui(self):
+        """Creates the main GUI window using Tkinter with buttons for adding, removing, & listing expenses, & quitting the menu
+        """
         root = Tk()
         root.title("Welcome to the Financial Tracker")
         root.geometry('700x400')
@@ -194,7 +197,8 @@ class UI():
         root.mainloop()
 
     def add_expense(self):
-
+        """Adds a new expense to the finance tracker in a new window where user can input expense details (date, amount, category)
+        """
         def check_entry():
             amount = amount_txt.get()
             date = date_txt.get()
@@ -234,6 +238,8 @@ class UI():
 
 
     def remove_expense(self):
+        """Removes an existing expense from the finance tracker in a window that displays the list of expenses & provides user the choice of which expense to remove
+        """
         root = Tk()
         root.title("Pick an expense to remove")
         root.geometry('700x400')
@@ -243,6 +249,8 @@ class UI():
 
 
     def list_expenses(self):
+        """Lists all expenses (with option to show category totals) in a window
+        """
         root = Tk()
         root.title("Here are your expenses:")
         root.geometry('700x400')
