@@ -171,12 +171,16 @@ class UI():
     """A class to create a GUI for the finance tracker"""
     def gui(self):
         """Creates the main GUI window using Tkinter with buttons for adding, removing, & listing expenses, & quitting the menu
+
+        Side Effects:
+            Creates a root window for the user options to be displayed from and entered into.
         """
+        
         root = Tk()
         root.title("Welcome to the Financial Tracker")
         root.geometry('700x400')
 
-
+        #list the possible options the user can do from the home screen
         btn1 = Button(root, text = "1. Add A New Expense", fg = "black", command = self.add_expense)
         btn1.grid(column=10, row = 5)
         btn2 = Button(root, text = "2. Remove an Expense", fg = "black", command = self.remove_expense)
@@ -188,11 +192,6 @@ class UI():
 
 
         lbl = Label(root, text = "Please choose from one of the following options (1, 2, 3, 4):")
-        # lbl.grid()
-        # txt = Entry(root, width = 10)
-        # txt.grid(column = 1, row = 12)
-        # response = txt.get()
-        # lbl.configure(response)
 
         root.mainloop()
 
@@ -200,6 +199,10 @@ class UI():
         """Adds a new expense to the finance tracker in a new window where user can input expense details (date, amount, category)
         """
         def check_entry():
+            """Make sure the user's entry is of the correct variable type. If it is, save the new entry and go back to the main window.
+            
+            Side Effects:
+                Appends the new expense to the new_expense_list object if the entries pass the check"""
             amount = amount_txt.get()
             date = date_txt.get()
             category = category_txt.get()
@@ -238,7 +241,11 @@ class UI():
 
 
     def remove_expense(self):
-        """Removes an existing expense from the finance tracker in a window that displays the list of expenses & provides user the choice of which expense to remove
+        """Removes an existing expense from the finance tracker in a window that displays the list of 
+        expenses & provides user the choice of which expense to remove
+
+        Side Effects:
+            remove the given expense from the list
         """
         root = Tk()
         root.title("Pick an expense to remove")
@@ -256,6 +263,11 @@ class UI():
         root.geometry('700x400')
 
         def category_totals():
+            """if the user wants to see category totals - display them
+            
+            Side Effects:
+                Once the user pushes no the root is destroyed and the user is returned to the home screen.
+                If the user pushes yes a categoried list of expenses is displayed """
             see_totals = category_txt.get()
             if see_totals.lower() == "no":
                 root.destroy()
@@ -291,75 +303,9 @@ class UI():
 new_expense_list = Create_expenses()
 
 def main():
+    """Creates a new UI object which can call the gui method to create the home screen"""
     main_window = UI()
     main_window.gui()
-    # """Initiates options on menu
-    
-    # Raises:
-    #     ValueError: empty list
-    # """
-    # while True:
-    # ###Prompt the user
-
-    #     #Display.printMenu()
-    #     optionSelected = input(">")
-        
-    #     if (optionSelected == "1"):
-    #         print("Enter the date (Monday, Tuesday...): ")
-    #         while True:
-    #             try:
-    #                 date = input(">")
-    #                 break
-    #             except:
-    #                  print("Invalid input. Please try again.")
-            
-    #         print("Enter expense amount: ")
-    #         while True:
-    #             try:
-    #                 amount = input("> ")
-    #                 break
-    #             except:
-    #                  print("Invalid input. Please try again.")
-                     
-    #         print("Enter category (Food, Housing, Transport, School, Misc:): ")
-    #         while True:
-    #             try:
-    #                 category = input(">")
-    #             except:
-    #                 print("Invalid input. Please try again.") 
-    #             new_expense_list.add_expense(date, amount, category)
-    #             break
-                
-    #     elif(optionSelected == '2'):
-    #         Display.removeExpense(new_expense_list.get_expense_list())
-    #         break
-            
-    #     elif(optionSelected == '3'):
-    #         try:
-    #             result = Results.organize_days(new_expense_list.get_expense_list())
-    #             Display.listExpenses(result)
-    #             print(f"Total amount spent for this week: {Results.calculate_total_week(result)}")
-                
-    #             i = input("See category total expenses?(yes/no)")
-    #             if i.lower() == "yes":
-    #                 category_totals = Results.calculate_category_total(result)
-    #                 print("Category Total Expenses: ")
-    #                 for category, total in category_totals.items():
-    #                     print(f"{category}: ${total}")
-    #         except ValueError:
-    #             print("Nothing in the list")
-    #             break
-                
-    #     elif(optionSelected == '4'):
-    #         quit()
-            
-    #     else:
-    #          print("Invalid input. Please try again.")
-    #          #Display.printMenu()
-        
-    #     print("\n")
-    #     main()
-    pass
 
 if __name__ == "__main__":
     main()

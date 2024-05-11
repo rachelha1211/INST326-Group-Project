@@ -106,14 +106,15 @@ class Results():
 
    
 class Display(): 
-    "A class that prints user directions for the program."   
-    def printMenu():
-        """Prints the menu options"""
-        print("Please choose from one of the following options (1, 2, 3, 4):")
-        print("1. Add A New Expense")
-        print("2. Remove an Expense")
-        print("3. List All Expenses and total budget for the week")
-        print("4. Quit Menu")
+    "A class that prints user directions for the program."  
+
+    # def printMenu():
+    #     """Prints the menu options"""
+    #     print("Please choose from one of the following options (1, 2, 3, 4):")
+    #     print("1. Add A New Expense")
+    #     print("2. Remove an Expense")
+    #     print("3. List All Expenses and total budget for the week")
+    #     print("4. Quit Menu")
 
     def listExpenses(sorted_list):
         """Lists all the expenses for the week
