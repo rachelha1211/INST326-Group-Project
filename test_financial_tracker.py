@@ -1,6 +1,6 @@
 """Test units for financial tracker."""
 import pytest
-import finance_trackerfinal as ft
+import finance_tracker_gui as ft
 
 
 
