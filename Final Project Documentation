@@ -1,0 +1,14 @@
+Final Project Documentation
+
+Summary of project:
+For our final project, we have programmed a personal finance tracker. It allows the user to track their expenses per week making for a simple yet effective way of 
+recording expenses. One of its functions is being able to add an expense that includes information about its amount, date of spending, and category and being able to view 
+inputted expense in a list format; it also calcuates expense totals for each category listed. In addition our program also allows for the deletion of expenses if necessary.
+
+Instructions for running tracker:
+Enter into a terminal and type in "python (or python 3 if on mac) finance_tracker_gui.py. It should run automatically from there.
+
+Understanding output:
+When the program runs, a second screen should pop up, allowing the user to choose an assortment of actions through buttons as stated in the summary. With each click of a button, another screen will pop up specifically for that action.
+
+Bibliography:
