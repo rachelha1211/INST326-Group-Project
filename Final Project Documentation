@@ -5,18 +5,33 @@ For our final project, we have programmed a personal finance tracker. It allows 
 recording expenses. One of its functions is being able to add an expense that includes information about its amount, date of spending, and category and being able to view 
 inputted expense in a list format; it also calcuates expense totals for each category listed. In addition our program also allows for the deletion of expenses if necessary.
 
+
 Instructions for running tracker:
 Enter into a terminal and type in "python (or python 3 if on mac) finance_tracker_gui.py. It should run automatically from there.
+
 
 Understanding output:
 When the program runs, a second screen should pop up, allowing the user to choose an assortment of actions through buttons as stated in the summary. With each click of a button, another screen will pop up specifically for that action.
 
+
 Bibliography:
 
-Alomenu, D. (2023 Sept. 6). Building personal expense tracker with Python and SQLite. Medium, https://medium.com/@calormenubuilding-a-personal-expense-tracker-with-python-and-sqlite-571e1b04b802.
+Alomenu, D. (2023 Sept. 6). Building personal expense tracker with Python and SQLite. Medium, https://medium.com/@calormenu/building-a-personal-expense-tracker-with-python-and-sqlite-571e1b04b802.
+
+    The writer of the article showcases a summary of his personal project om creating his own personal expense tracker. He used Python and SQLite as the environments for
+    his codes. He includes an outline of his ideas for the project and its design, including functions like adding, viewing, and calculating expenses. The writer writes about his process in setting up his programs all the way to being able to test and use it the way he wanted it to.
+
 
 BotBrew Labs. (2024 Feb. 6). How to manage your budget with a simple python script. Medium. https://medium.com/@botbrewlabs/how-to-manage-your-budget-with-a-simple-python-script-14dd767b909c.
 
+    The writer of the article describes a basic run through of the sort of functions and parts that make up a simple budgeting program through Python. They breakdown each part from the user inputs to being able to use the inputted data in listing and even visualizing the data with additional tools like Pandas. 
+
+
 Geeks for Geeks. (9 May 2024). Python tkinter. https://www.geeksforgeeks.org/python-gui-tkinter/.
 
+    This resource goes through an introduction and general guide of how to implement a Python interface called Tkinter, a Graphical User Interface. This guide covers everything needed in order to make a first application with Tkinter, including an arrange of options and widgets used to customize and create a Tkinter application.
+
+
 Konchada, S. A. (2023 Sept. 9). How to build an expense tracker using Python. Make Use Of. https://www.makeuseof.com/python-expense-tracker-build/.
+
+    The writer of this article summarizes a way of programming an expense tracker and what sorts of modules and additional tools that can be helpful in creating this application. They include add-ons such as Tkinter, CSV, and Matplotlib as helpful modules to include when programming. Examples of different inputs and how to use different methods from those modules are included. There is also guides on how to test the features of the code and outputs of it when finished with programming.
