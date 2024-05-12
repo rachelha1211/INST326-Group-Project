@@ -6,7 +6,7 @@ recording expenses. One of its functions is being able to add an expense that in
 inputted expense in a list format; it also calcuates expense totals for each category listed. In addition our program also allows for the deletion of expenses if necessary.
 
 Instructions for running tracker:
-Enter into a terminal and type in "python (or python 3 if on mac) finance_tracker_gui.py. It should run automatically from there.
+Enter into a terminal and type in "python (or python 3 if on mac) finance_tracker_gui.py. It should run automatically from there with a GUI for the user to navigate through the tracker.
 
 Understanding output:
 When the program runs, a second screen should pop up, allowing the user to choose an assortment of actions through buttons as stated in the summary. With each click of a button, another screen will pop up specifically for that action.
