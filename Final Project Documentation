@@ -7,7 +7,7 @@ inputted expense in a list format; it also calcuates expense totals for each cat
 
 
 Instructions for running tracker:
-Enter into a terminal and type in "python (or python 3 if on mac) finance_tracker_gui.py. It should run automatically from there.
+Enter into a terminal and type in "python (or python 3 if on mac) finance_tracker_gui.py. It should run automatically from there with a GUI for the user to navigate through the tracker.
 
 
 Understanding output:
