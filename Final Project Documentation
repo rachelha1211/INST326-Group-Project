@@ -12,3 +12,11 @@ Understanding output:
 When the program runs, a second screen should pop up, allowing the user to choose an assortment of actions through buttons as stated in the summary. With each click of a button, another screen will pop up specifically for that action.
 
 Bibliography:
+
+Alomenu, D. (2023 Sept. 6). Building personal expense tracker with Python and SQLite. Medium, https://medium.com/@calormenubuilding-a-personal-expense-tracker-with-python-and-sqlite-571e1b04b802.
+
+BotBrew Labs. (2024 Feb. 6). How to manage your budget with a simple python script. Medium. https://medium.com/@botbrewlabs/how-to-manage-your-budget-with-a-simple-python-script-14dd767b909c.
+
+Geeks for Geeks. (9 May 2024). Python tkinter. https://www.geeksforgeeks.org/python-gui-tkinter/.
+
+Konchada, S. A. (2023 Sept. 9). How to build an expense tracker using Python. Make Use Of. https://www.makeuseof.com/python-expense-tracker-build/.
