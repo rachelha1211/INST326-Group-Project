@@ -35,6 +35,7 @@ class Test_Results(unittest.TestCase):
         expense_two = ft.Expense("Monday", 23, "Food")
         expense_tracker.add_expense(expense_two.date, expense_two.amount, expense_two.category)
         #list = expense_tracker.get_expense_list()
+        #total = ft.Results().calculate_total_week(expense_tracker.get_expense_list())
         total = ft.Results().calculate_total_week([expense_one, expense_two])
         self.assertEqual(total, 33)
 
