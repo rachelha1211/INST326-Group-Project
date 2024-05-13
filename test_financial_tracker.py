@@ -4,8 +4,8 @@ import finance_tracker_gui as ft
 
 
 class Test_create(unittest.TestCase):
-    #fail
     def test_expense(self):
+        """Test for creating an expense."""
         expense = ft.Create_expenses()
         expense.add_expense("Monday", 23, "Food")
         exlist = expense.get_expense_list()
@@ -14,8 +14,8 @@ class Test_create(unittest.TestCase):
         self.assertEqual(exlist[0].category, "Food") 
 
 class Test_Results(unittest.TestCase):
-    #fail
     def test_organize_days(self):
+        """Test for accurately sorting expenses by day of the week."""
         expense_tracker = ft.Create_expenses()
         expense_one = ft.Expense("Wednesday", 10, "School")
         expense_tracker.add_expense(expense_one.date, expense_one.amount, expense_one.category)
@@ -27,8 +27,8 @@ class Test_Results(unittest.TestCase):
         self.assertEqual(sorted_list[0].amount, 23)
         self.assertEqual(sorted_list[0].category, "Food")
     
-    #passed    
     def test_calculate_total_week(self):
+        """Test for calculating the total amount of all expense amounts in the week."""
         expense_tracker = ft.Create_expenses()
         expense_one = ft.Expense("Wednesday", 10, "School")
         expense_tracker.add_expense(expense_one.date, expense_one.amount, expense_one.category)
@@ -40,8 +40,8 @@ class Test_Results(unittest.TestCase):
         self.assertEqual(total, 33)
 
 class TestCreateExpenses(unittest.TestCase):
-    #fail
     def test_add_expense(self):
+        """Test for adding inputted expense into list."""
         expense_tracker = ft.Create_expenses()
         expense_one = ft.Expense("Monday", 23, "Food")
         expense_tracker.add_expense(expense_one.date, expense_one.amount, expense_one.category)
@@ -57,8 +57,9 @@ class TestCreateExpenses(unittest.TestCase):
         self.assertEqual(list[1].category, "School") 
         # self.assertEqual(expense_tracker[0], ft.Expense("Monday", 23, "Food"))
         # self.assertEqual(expense_tracker[1], ft.Expense("Wednesday", 10, "School")) 
-    #fail
+
     def test_get_expense_list(self):
+        """Test for ccreating list of expenses."""
         expense_tracker = ft.Create_expenses()
         expense_tracker.add_expense("Monday", 23, "Food")
         exlist = expense_tracker.get_expense_list()
